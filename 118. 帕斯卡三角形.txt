@@ -1,0 +1,66 @@
+﻿给定 numRows, 生成帕斯卡三角形的前 numRows 行。
+
+例如, 给定 numRows = 5,
+
+返回
+
+[
+     [1],
+    [1,1],
+   [1,2,1],
+  [1,3,3,1],
+ [1,4,6,4,1]
+]
+
+
+代码：
+var generate = function(numRows) {
+	//先申明函数，将其每一项再申明为子函数
+    var arr = new Array(numRows);
+    for(var k = 0; k<numRows ;k++) {
+        arr[k] = new Array();
+    }
+	//赋值
+    for(var i = 0; i < numRows ;i++) {
+        for(var j = 0; j<= i  ;j++) {
+            if ( j == 0 || i ==j ) {
+                arr[i][j] = 1;
+            }else {
+                arr[i][j] = arr[i-1][j-1] + arr[i-1][j];
+            }
+        }
+    }
+    return arr;
+};
+
+
+
+
+
+大神代码：
+
+var generate  = function(numRows){
+  if (numRows == 0) return [];
+  var result = [[1]];
+  for(var i = 1; i<numRows;i++) {
+    var curArr = [];
+    for(var j = 0; j<=i;j++) {
+      var preArr = result[i-1];
+	  var pre = preArr[j-1]?preArr[j-1]:0
+      var cur = preArr[j]?preArr[j]:0;
+      curArr.push(pre+cur);
+    }
+    result.push(curArr)
+  }
+  return result;
+}
+
+
+
+
+
+
+
+
+
+
