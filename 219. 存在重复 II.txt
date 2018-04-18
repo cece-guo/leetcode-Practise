@@ -1,0 +1,29 @@
+给定一个整数数组和一个整数 k，判断数组中是否存在两个不同的索引 i 和 j，使 nums [i] = nums [j]，并且 i 和 j 的绝对差值最大为 k
+
+
+代码：
+var containsNearbyDuplicate = function(nums, k) {
+  if (nums.length == 0)  return false
+  var obj = {};
+  for(var i = 0 ;i<nums.length; i++) {
+    if(obj[nums[i]]!= null && i-obj[nums[i]] <= k){
+	  return true
+	} else{
+	  obj[nums[i]] = i;
+	}
+  }
+  return false
+};
+
+
+var containsNearbyDuplicate = function(nums, k) {
+  let result = false;
+  let obj = {};
+  let length =  nums.length;
+  for(let i = 0; i < length; i++) {
+    let item = nums[i];
+    if (obj[item] !== undefined && i - obj[item] <= k) return true;
+    obj[item] = i;
+  }
+  return result;
+};

@@ -21,6 +21,21 @@
 
 
 代码:
+
+第一次代码：系统提示计算超时
+var twoSum = function(numbers, target) {
+  var len = numbers.length;
+  for(var i = 0;i<len;i++) {
+    var index = numbers.slice(i+1).indexOf(target-numbers[i]);
+    if (index != -1){
+	  return [i+1,i+index+2]
+	}
+  }
+  return [];
+};
+
+
+第二次代码：
 var twoSum = function(numbers, target) {
   var i = 0 , j = numbers.length-1;
   while(i<j){

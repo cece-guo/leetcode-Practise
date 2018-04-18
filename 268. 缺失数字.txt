@@ -1,0 +1,35 @@
+给出一个包含 0, 1, 2, ..., n 中 n 个数的序列，找出 0 .. n 中没有出现在序列中的那个数。
+
+案例 1
+
+输入: [3,0,1]
+输出: 2
+ 
+
+案例 2
+
+输入: [9,6,4,2,3,5,7,0,1]
+输出: 8
+
+
+
+代码：
+var missingNumber = function(nums) {
+    const l=nums.length;
+    let sum=l*(l+1)/2;
+    return sum-nums.reduce((a,b)=>a+b);
+};
+
+
+
+var missingNumber = function(nums) {
+    const l=nums.length;
+    let sum=0;
+    for(let i=0,len=l+1;i<len;i++){
+        sum+=i;
+    }
+    nums.forEach(function (v) {
+        sum-=v;
+    });
+    return sum;
+};
